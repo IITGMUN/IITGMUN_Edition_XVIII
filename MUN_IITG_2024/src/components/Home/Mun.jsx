@@ -488,7 +488,7 @@ const Mun = () => {
       {/* --- FLOATING APPLY BUTTON --- */}
       <div className="fixed bottom-6 right-6 z-40">
         <a
-          href="https://forms.gle/KLBcRyHyniV1zgxk6"
+          href="https://tr.ee/LOl6SKumoN"
           target="_blank"
           rel="noreferrer"
           className="block bg-[#E6395E] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-[#c92a4b] hover:shadow-xl hover:-translate-y-1 transition-all animate-bounce"
