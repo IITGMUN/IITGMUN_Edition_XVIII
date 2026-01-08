@@ -26,7 +26,7 @@ import sponsor3 from "./new_resources/spns33new.png";
 import sponsor4 from "./new_resources/tesmaco.png";
 import sponsor11 from "./new_resources/dev remake 1.png";
 import sponsor12 from "./new_resources/axis.png";
-import sponsor13 from "./new_resources/group.png";
+import sponsor13 from "./new_resources/Group.png";
 
 // --- DATA: REVIEWS ---
 const ReviewData = [
