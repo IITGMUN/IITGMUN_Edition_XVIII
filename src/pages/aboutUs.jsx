@@ -1,31 +1,29 @@
-import Navbar from "../components/general/Navbar";
-import Letter from "../components/aboutUs/letter";
-import MeetTheTeam from "../components/aboutUs/meetTheTeam";
-import PageHeader from "../components/general/pageHeader";
-import { useState,useEffect } from "react";
-import Mnavbar from '../components/general/mobile_nav'
-import Footerm from "../components/general/Footerm";
+import { useState, useEffect } from "react";
+import Navbar from "../components/common/Navbar";
+import Mnavbar from "../components/common/MobileNav";
+import Footerm from "../components/common/Footer";
+import PageHeader from "../components/common/PageHeader";
+import Letter from "../components/about/Letter";
+import MeetTheTeam from "../components/about/MeetTheTeam";
+
 const AboutUs = () => {
   const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-        setIsMobileView(window.innerWidth <= 600); // Adjust the width breakpoint as needed
+      setIsMobileView(window.innerWidth <= 600);
     };
-
-    // Initial check on component mount
     handleResize();
-
-    window.addEventListener('resize', handleResize);
-
+    window.addEventListener("resize", handleResize);
     return () => {
-        window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-}, []);
+  }, []);
+
   return (
     <div className="w-full">
-      <Mnavbar/>
-          {!isMobileView && <Navbar />}
+      <Mnavbar />
+      {!isMobileView && <Navbar />}
       <PageHeader title={"About Us"} color={"#FFE3BC"} />
       <div className="w-full flex relative flex-col items-center">
         <p className="lg:my-[11.6vh] py-5 px-[min(15.3vw,30px)] text-center w-[max(300px,80vw)] text-lg font-light md:text-base lg:font-extralight leading-[30px] text-[#192463] font-montserrat">
@@ -43,7 +41,7 @@ const AboutUs = () => {
         </p>
       </div>
       <Letter />
-      <MeetTheTeam/>
+      <MeetTheTeam />
       <Footerm />
     </div>
   );

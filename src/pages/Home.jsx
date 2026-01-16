@@ -1,9 +1,9 @@
-import Mun from "../components/Home/Mun";
+import HomeContent from "../components/home/HomeContent";
+
 export default function Home() {
   return (
     <>
-      {/* <Navbar/> */}
-      <Mun />
+      <HomeContent />
     </>
   );
 }

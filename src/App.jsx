@@ -1,31 +1,20 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+import PrevEditions from "./pages/PrevEditions";
 
-import { BrowserRouter,Route, Routes } from 'react-router-dom'
-import AboutUs from './pages/aboutUs'
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
-import  Home from "./pages/Home"
-import ContactUs from './pages/contactUs'
-import PrevEditions from './pages/prevEditions'
-
-
-
-
-
-
-function App(){
+function App() {
   return (
-    <>
-     <BrowserRouter>
-     <Routes>
-          <Route path='/ContactUs' element={<ContactUs/>}  />
-          <Route path='/AboutUs' element={<AboutUs/>}  />
-          <Route path='/PreviousEditions' element={<PrevEditions/>}  />
-          <Route exact path="/" element={<Home/>}/>
-        </Routes>
-        </BrowserRouter>
-       </>
-   
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/PreviousEditions" element={<PrevEditions />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
 
 export default App;
