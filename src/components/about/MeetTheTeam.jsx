@@ -1,8 +1,7 @@
 import React from "react";
 import TeamCard from "./TeamCard";
-import SectionHeading from "../common/SectionHeading";
 
-// Image Imports (Ensure these exist in src/assets/images/about/)
+// Image Imports
 import ketan from "../../assets/images/about/Profile 4.png";
 import adityan from "../../assets/images/about/Profile 5.png";
 import pratham from "../../assets/images/about/Profile 6.png";
@@ -20,84 +19,55 @@ const MeetTheTeam = () => {
     [
       "Thanmai Sai Krishna",
       "Chief of Staff",
-      {
-        linkedin:
-          "https://www.linkedin.com/in/thanmai-sai-krishnan-mudavath-b9974524a/",
-        instagram: "https://www.instagram.com/krish.2.2.05/",
-      },
+      { linkedin: "#", instagram: "#" },
       samarth,
     ],
     [
       "Ashutosh Balasubramaniam",
       "Director of IP",
-      {
-        linkedin:
-          "https://www.linkedin.com/in/ashutosh-balasubramaniam-03106a258/",
-        instagram: "https://www.instagram.com/ashutoshbala_/",
-      },
+      { linkedin: "#", instagram: "#" },
       pratham,
     ],
     [
       "Ansul Jain",
       "Director WebOps",
-      {
-        linkedin: "https://www.linkedin.com/in/vedikag/",
-        instagram: "https://www.instagram.com/ansuljain2003/",
-      },
+      { linkedin: "#", instagram: "#" },
       vedika,
     ],
     [
       "Ayush Kumar",
       "Director of Public Relations",
-      {
-        linkedin: "https://www.linkedin.com/in/ayush-kumar-235344254",
-        instagram: "https://www.instagram.com/electricbreeze2004/",
-      },
+      { linkedin: "#", instagram: "#" },
       kausth,
     ],
     [
       "Dhyani Patel",
       "Director Administration",
-      {
-        linkedin: "https://www.linkedin.com/in/dhyani-patel-/",
-        instagram: "https://www.instagram.com/rishit718?igsh=dGRweDBvdzFxb3lm",
-      },
+      { linkedin: "#", instagram: "#" },
       Rishith,
     ],
     [
       "Aarohan Gupta",
       "Director Delegate Affairs",
-      {
-        linkedin: "https://www.linkedin.com/in/aarohan-gupta/",
-        instagram: "https://www.instagram.com/aarohan_gupta/",
-      },
+      { linkedin: "#", instagram: "#" },
       Rishith2,
     ],
     [
       "Rayansh Khamesra",
       "Director Marketing",
-      {
-        linkedin: "https://www.linkedin.com/in/rayansh-khamesra/",
-        instagram: "https://www.instagram.com/rayansh_khamesra",
-      },
+      { linkedin: "#", instagram: "#" },
       Rishith3,
     ],
     [
       "Aman Gahukar",
       "Director of Creative Content",
-      {
-        linkedin: "https://www.linkedin.com/in/amanprashant/",
-        instagram: "https://www.instagram.com/aman_gahukar31/",
-      },
+      { linkedin: "#", instagram: "#" },
       advait,
     ],
     [
       "Harishankar Yadav",
       "Director Logistics",
-      {
-        linkedin: "https://www.linkedin.com/in/harishankar-yadav-7386a1280/",
-        instagram: "https://www.instagram.com/harishankarhere/",
-      },
+      { linkedin: "#", instagram: "#" },
       basith,
     ],
   ];
@@ -106,29 +76,37 @@ const MeetTheTeam = () => {
     [
       "Yoshita Banerjee",
       "Secretary General",
-      {
-        linkedin: "https://www.linkedin.com/in/yoshita-banerjee-baaa6724b",
-        instagram: "https://www.instagram.com/yoshitabanerjee_/",
-      },
+      { linkedin: "#", instagram: "#" },
       adityan,
     ],
     [
       "Divya Mate",
       "Director General",
-      {
-        linkedin: "https://www.linkedin.com/in/divya-mate-1394152b5",
-        instagram: "https://www.instagram.com/divya.__.123/",
-      },
+      { linkedin: "#", instagram: "#" },
       ketan,
     ],
   ];
 
   return (
-    <div className="px-9 max-letter:px-4 py-10 mt-40 w-full relative overflow-hidden">
-      <SectionHeading title={"Meet the Team"} color={"#051c46"} />
+    <div className="px-4 py-10 w-full relative bg-[#F3F8F9] mt-20">
+      {/* Updated Header Section with Fading Lines */}
+      <div className="w-full flex justify-center mb-36 mt-8">
+        <div className="inline-flex justify-start items-center gap-3 md:gap-6">
+          {/* Left Line: Fades from Transparent (left) to Blue (right) */}
+          <div className="w-16 md:w-44 h-[3px] bg-gradient-to-r from-transparent to-blue-800 rounded-l-full"></div>
+
+          {/* Text */}
+          <div className="justify-center text-blue-800 text-4xl md:text-5xl font-europa leading-6 text-center">
+            Meet the Team
+          </div>
+
+          {/* Right Line: Fades from Blue (left) to Transparent (right) */}
+          <div className="w-16 md:w-44 h-[3px] bg-gradient-to-r from-blue-800 to-transparent rounded-r-full"></div>
+        </div>
+      </div>
 
       {/* High Council Grid */}
-      <div className="w-full grid grid-cols-2 md:grid-cols-2 gap-x-3 gap-y-5 justify-items-center mx-auto my-16">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-16">
         {team2.map(([name, position, socialMedia, img]) => (
           <TeamCard
             key={name}
@@ -136,12 +114,13 @@ const MeetTheTeam = () => {
             position={position}
             socialMedia={socialMedia}
             img={img}
+            variant="pink"
           />
         ))}
       </div>
 
       {/* Secretariat Grid */}
-      <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-5 justify-items-center mx-auto my-16">
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {team.map(([name, position, socialMedia, img]) => (
           <TeamCard
             key={name}
@@ -149,6 +128,7 @@ const MeetTheTeam = () => {
             position={position}
             socialMedia={socialMedia}
             img={img}
+            variant="pink"
           />
         ))}
       </div>

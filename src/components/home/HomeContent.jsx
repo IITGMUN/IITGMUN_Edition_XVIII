@@ -5,8 +5,8 @@ import Footer from "../common/Footer";
 
 // --- ASSET IMPORTS ---
 // Ensure these files exist in src/assets/images/home/
-import heroImg from "../../assets/images/home/hero_illustration.png";
-import heroText from "../../assets/images/home/hero_text.png";
+import heroImg from "../../assets/images/home/hero_illustration.svg";
+import heroText from "../../assets/images/home/hero_text.svg";
 import ecofin_pic from "../../assets/images/home/Mask group.png";
 import disec_pic from "../../assets/images/home/Group 34579.png";
 import ls1 from "../../assets/images/home/Group 34580.png";
@@ -14,7 +14,7 @@ import male_profile from "../../assets/images/home/Male profile.png";
 import ham_logo from "../../assets/images/home/Vector 11.png";
 import cross_logo from "../../assets/images/home/Vector 10.png";
 import home_logo from "../../assets/images/home/Frame 72.png";
-import committees_bg from "../../assets/images/home/Frame 34733.png";
+import committees_bg from "../../assets/images/home/Frame 34733.svg";
 
 // Sponsors
 import sponsor1 from "../../assets/images/home/news18 assam north east combined 1.png";
@@ -281,7 +281,7 @@ const HomeContent = () => {
         style={{
           background: [
             "radial-gradient(90% 70% at 50% 40%, rgba(241,248,243,0.18) 0%, rgba(241,248,243,0) 60%)",
-            "linear-gradient(135deg, #3958FD 0%, #3958FD 52%, #223597 100%)",
+            "linear-gradient(180deg, #3958FD 0%, #4b56d2 100%)",
             "radial-gradient(78% 68% at 0% 0%, rgba(34,53,151,0.55) 0%, rgba(34,53,151,0) 55%)",
             "radial-gradient(78% 68% at 100% 0%, rgba(34,53,151,0.55) 0%, rgba(34,53,151,0) 55%)",
           ].join(","),
@@ -323,12 +323,12 @@ const HomeContent = () => {
       >
         {/* Section Header */}
         <div className="flex flex-col items-center mb-16">
-          <div className="flex items-center gap-4 mb-2">
-            <div className="h-1 w-12 bg-[#3958FD]"></div>
-            <h2 className="text-3xl md:text-5xl font-black text-[#3958FD] font-raleway text-center">
+          <div className="flex items-center gap-8 mb-8 w-full max-w-4xl">
+            <div className="flex-1 h-1 bg-gradient-to-r from-transparent to-[#3958FD]"></div>
+            <h2 className="text-3xl md:text-5xl font-black text-[#3958FD] font-raleway text-center whitespace-nowrap flex-shrink-0">
               Join Our Committees
             </h2>
-            <div className="h-1 w-12 bg-[#3958FD]"></div>
+            <div className="flex-1 h-1 bg-gradient-to-l from-transparent to-[#3958FD]"></div>
           </div>
         </div>
 
@@ -395,12 +395,14 @@ const HomeContent = () => {
 
       {/* --- REVIEWS SECTION --- */}
       <div className="w-full bg-[#F06285] py-20 px-6 overflow-hidden">
-        <div className="flex flex-col items-center mb-12 relative">
-          <div className="w-44 h-0.5 bg-white absolute left-1/2 -translate-x-[calc(50%+120px)] top-1/2"></div>
-          <h2 className="text-4xl font-bold text-white font-raleway text-center relative z-10 bg-[#F06285] px-4">
-            Reviews
-          </h2>
-          <div className="w-40 h-0.5 bg-white/70 absolute left-1/2 translate-x-[calc(-50%+120px)] top-1/2"></div>
+        <div className="flex flex-col items-center mb-12">
+          <div className="flex items-center gap-8 mb-8 w-full max-w-2xl">
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent to-white"></div>
+            <h2 className="text-4xl font-bold text-white font-raleway text-center whitespace-nowrap flex-shrink-0">
+              Reviews
+            </h2>
+            <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent to-white"></div>
+          </div>
         </div>
 
         <div className="max-w-[1200px] mx-auto">
@@ -439,9 +441,13 @@ const HomeContent = () => {
       {/* --- SPONSORS SECTION --- */}
       <div className="w-full bg-white py-20 px-6">
         <div className="flex flex-col items-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black text-[#3245A9] font-raleway text-center mb-2">
-            Our Previous Edition Sponsors
-          </h2>
+          <div className="flex items-center gap-8 mb-8 w-full max-w-4xl">
+            <div className="flex-1 h-1 bg-gradient-to-r from-transparent to-rose-400"></div>
+            <h2 className="text-3xl md:text-4xl font-black text-[#F06285] font-raleway text-center whitespace-nowrap flex-shrink-0">
+              Our Previous Partners
+            </h2>
+            <div className="flex-1 h-1 bg-gradient-to-l from-transparent to-rose-400"></div>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto space-y-12">

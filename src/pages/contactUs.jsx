@@ -1,42 +1,52 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/common/Navbar";
-import Mnavbar from '../components/common/MobileNav';
+import Mnavbar from "../components/common/MobileNav";
 import Footerm from "../components/common/Footer";
-import PageHeader from "../components/common/PageHeader";
 import ContactDetails from "../components/contact/ContactDetails";
 import Map from "../components/contact/Map";
 
 const ContactUs = () => {
-    const [isMobileView, setIsMobileView] = useState(false);
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobileView(window.innerWidth <= 600);
-        };
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+  const [isMobileView, setIsMobileView] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 600);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-    return (
-        <>
-            <Mnavbar />
-            {!isMobileView && <Navbar />}
-            <div>
-                <PageHeader title={"For more queries"} color={'#FFE3BC'} subtitle={"We'd love to hear from you"}/>
-            </div>
-            <div className="flex flex-col md:flex-row justify-between items-start w-full px-2 mx-auto my-16">
-                <div className="md:w-1/3 flex flex-col justify-start">
-                    <ContactDetails />
-                </div>
-                <div className="md:w-2/3 flex justify-center">
-                    <Map />
-                </div>
-            </div>
-            <Footerm />
-        </>
-    );
-}
+  return (
+    <div className="bg-stone-100 min-h-screen flex flex-col justify-between overflow-x-hidden">
+      <Mnavbar />
+      {!isMobileView && <Navbar />}
+
+      <div className="flex-grow w-full max-w-[1400px] mx-auto px-6 md:px-16 pt-12 pb-20">
+        <div className="mt-24 mb-16">
+          {/* Added font-extrabold here for maximum boldness */}
+          <h1 className="text-blue-800 text-6xl md:text-7xl font-extrabold font-europa leading-tight -mb-4">
+            For more queries
+          </h1>
+          <p className="text-rose-500 text-2xl md:text-3xl font-medium font-montreal">
+            We’d love to hear from you
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-0">
+          <div className="w-full lg:w-5/12 flex flex-col justify-start pt-4">
+            <ContactDetails />
+          </div>
+          <div className="w-full lg:w-7/12 h-[400px] md:h-[500px] pr-16">
+            <Map />
+          </div>
+        </div>
+      </div>
+
+      <Footerm />
+    </div>
+  );
+};
 
 export default ContactUs;

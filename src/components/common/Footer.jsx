@@ -5,7 +5,7 @@ import alcherLogo from "../../assets/images/common/alcher.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#662532] text-white w-full py-12 px-8 font-['Neue_Montreal']">
+    <footer className="bg-[#662532] text-white w-full py-8 px-8 font-['Neue_Montreal']">
       <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* COLUMN 1: Contact & Credits */}
         <div className="flex flex-col space-y-8 text-left">
@@ -28,10 +28,10 @@ export default function Footer() {
           </div>
           <div className="pt-2 space-y-1">
             <p className="text-base font-extralight opacity-80 text-white">
-              Designed by XYZ
+              Designed by Atharva Deshmukh
             </p>
             <p className="text-base font-extralight opacity-80 text-white">
-              Developed by Shreyansh Kumar
+              Developed by Shreyansh Kumar, Abhirup Paul
             </p>
           </div>
         </div>

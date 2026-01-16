@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/common/Navbar";
 import Mnavbar from "../components/common/MobileNav";
 import Footerm from "../components/common/Footer";
-import PageHeader from "../components/common/PageHeader";
 import Timeline from "../components/PrevEditions/Timeline";
 
 const PrevEditions = () => {
@@ -21,7 +20,6 @@ const PrevEditions = () => {
     <div className="overflow-x-hidden">
       <Mnavbar />
       {!isMobileView && <Navbar />}
-      <PageHeader title={"Our Previous Editions"} color={"#FFE3BC"} />
       <Timeline />
       <Footerm />
     </div>

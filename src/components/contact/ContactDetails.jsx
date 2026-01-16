@@ -1,7 +1,7 @@
 // Ensure these are in src/assets/images/contact/
-import callImg from "../../assets/images/contact/Call.png";
-import mailImg from "../../assets/images/contact/Mail.png";
-import locationImg from "../../assets/images/contact/Location.png";
+import callImg from "../../assets/images/contact/Call.svg";
+import mailImg from "../../assets/images/contact/Mail.svg";
+import locationImg from "../../assets/images/contact/Location.svg";
 import DisplayDetails from "./DisplayDetails";
 
 const ContactDetails = () => {
@@ -13,9 +13,7 @@ const ContactDetails = () => {
       "Our location",
       "location",
       [
-        "Conference Hall, IIT Guwahati,",
-        "North Guwahati, Guwahati,",
-        "Assam 781039",
+        "Conference Hall, IIT Guwahati, North \nGuwahati, Guwahati, Assam 781039",
       ],
     ],
   ];

@@ -1,10 +1,7 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -15,16 +12,14 @@ export default {
         khaki: "#fed470",
         lightsteelblue: "#aab4e7",
         mediumaquamarine: "#a0edc9",
-        lightRed: '#F8506B',
-        darkRed:"#F22949",
-        darkBlue:'#3245A9',
+        lightRed: "#F8506B",
+        darkRed: "#F22949",
+        darkBlue: "#3245A9",
       },
       spacing: {},
       fontFamily: {
-        "cabinet-grotesk": "'Cabinet Grotesk'",
-        cabinet: ['Cabinet-Grotesk'],
-        montserrat: 'Montserrat, sans-serif',
-        raleway: ['Raleway', ...defaultTheme.fontFamily.sans]
+        montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
+        raleway: ["Raleway", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         xl: "20px",
@@ -32,8 +27,8 @@ export default {
         inherit: "inherit",
       },
       screens: {
-        mq950:{
-          raw:'screen and (max-width:950px)'
+        mq950: {
+          raw: "screen and (max-width:950px)",
         },
         mq750: {
           raw: "screen and (max-width: 750px)",
@@ -50,13 +45,13 @@ export default {
         mq400: {
           raw: "screen and (max-width: 400px)",
         },
-        mq350:{
+        mq350: {
           raw: "screen and (max-width: 350px)",
-        }
+        },
       },
-      boxShadow:{
-        'line':'0 38.5px 10px -40px #000000f4',
-        'lineLight': '0 36px 10px -40px #000000f4',
+      boxShadow: {
+        line: "0 38.5px 10px -40px #000000f4",
+        lineLight: "0 36px 10px -40px #000000f4",
       },
     },
   },
