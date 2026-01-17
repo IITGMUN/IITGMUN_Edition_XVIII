@@ -8,7 +8,7 @@ const Details = ({ name = "", position = "", socialMedia }) => {
   const instagramUrl = socialMedia?.instagram;
 
   return (
-    <div className="text-left ml-2 mt-4 overflow-hidden w-full mr-10 relative -top-24">
+    <div className="text-center mt-4 overflow-hidden w-[120px] sm:w-[261px] m-auto relative -top-24">
       <p className="text-xl lg:text-3xl font-extrabold font-raleway m-0 text-[#051c46] hyphens-auto">
         {name}
       </p>
@@ -16,7 +16,7 @@ const Details = ({ name = "", position = "", socialMedia }) => {
         {position}
       </p>
       {(linkedinUrl || instagramUrl) && (
-        <p className="m-0 mt-1 flex items-center">
+        <p className="m-0 mt-1 flex items-center justify-center">
           {linkedinUrl && (
             <a
               className="mr-2"

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import PrevEditions from "./pages/PrevEditions";
+import HallOfFame from "./pages/HallOfFame";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/PreviousEditions" element={<PrevEditions />} />
+        <Route path="/HallOfFame" element={<HallOfFame />} />
       </Routes>
     </BrowserRouter>
   );

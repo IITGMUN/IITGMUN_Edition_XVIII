@@ -96,7 +96,7 @@ const MeetTheTeam = () => {
           <div className="w-16 md:w-44 h-[3px] bg-gradient-to-r from-transparent to-blue-800 rounded-l-full"></div>
 
           {/* Text */}
-          <div className="justify-center text-blue-800 text-4xl md:text-5xl font-europa leading-6 text-center">
+          <div className="justify-center text-blue-800 text-4xl md:text-5xl font-europa leading-6 text-center font-extrabold">
             Meet the Team
           </div>
 

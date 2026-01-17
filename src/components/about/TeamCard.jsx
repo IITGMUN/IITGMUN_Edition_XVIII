@@ -12,7 +12,7 @@ const TeamCard = ({ name, position, socialMedia, img }) => {
       </div>
 
       {/* Child 2: Details Container (Even Child) */}
-      <div className="transition-all ease-in-out delay-150 duration-300 w-full">
+      <div className="transition-all ease-in-out delay-150 duration-300 w-[80%] text-center">
         <Details name={name} position={position} socialMedia={socialMedia} />
       </div>
     </div>
