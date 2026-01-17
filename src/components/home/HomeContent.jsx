@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
+import LiveTimeline from "./LiveTimeline";
 
 // --- ASSET IMPORTS ---
 // Ensure these files exist in src/assets/images/home/
@@ -131,6 +133,17 @@ const CommitteeCard = ({ data, onClick }) => {
       </div>
     </div>
   );
+};
+
+CommitteeCard.propTypes = {
+  data: PropTypes.shape({
+    logo: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    heading: PropTypes.string,
+    subHeading: PropTypes.string,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const HomeContent = () => {
@@ -344,6 +357,8 @@ const HomeContent = () => {
         </div>
       </div>
 
+      <LiveTimeline />
+
       {/* --- STATS SECTION (BLUE FOOTER STYLE) --- */}
       <div className="w-full bg-gradient-to-b from-blue-600 to-blue-800 text-white py-20 px-6 relative overflow-hidden">
         {/* Background Pattern */}
@@ -429,7 +444,7 @@ const HomeContent = () => {
                     {data.role}
                   </p>
                   <p className="text-sm leading-relaxed italic text-gray-700">
-                    "{data.comment}"
+                    &ldquo;{data.comment}&rdquo;
                   </p>
                 </div>
               </div>
