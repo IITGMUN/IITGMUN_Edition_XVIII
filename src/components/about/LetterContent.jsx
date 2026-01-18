@@ -4,7 +4,7 @@ import sgImage from "../../assets/images/about/DSC_9304 14.png";
 
 const LetterContent = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-24 ml-16">
+    <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-24 mx-2 md:ml-16">
       {/* Left Side: White Text Card */}
       <div className="w-full h-full lg:w-3/5 bg-white p-4 md:p-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15)] rounded-sm text-[#1a1a1a] font-montserrat text-xs md:text-sm leading-5 md:leading-6 text-justify relative z-10">
         <p className="mb-3">
@@ -50,8 +50,8 @@ const LetterContent = () => {
         </div>
       </div>
 
-      {/* Right Side: Image */}
-      <div className="w-full lg:w-2/5 flex justify-center lg:justify-center relative z-20">
+      {/* Right Side: Image - HIDDEN ON MOBILE */}
+      <div className="hidden lg:flex w-full lg:w-2/5 justify-center lg:justify-center relative z-20">
         {/* MAXIMUM SIZE: w-[1000px] on desktop with large negative margins */}
         <div className="w-[720px] md:w-[1300px] lg:w-[1500px] lg:-ml-28 lg:-mb-32">
           <img

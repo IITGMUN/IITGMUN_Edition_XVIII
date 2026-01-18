@@ -6,9 +6,11 @@ import Timeline from "../components/PrevEditions/Timeline";
 
 const PrevEditions = () => {
   const [isMobileView, setIsMobileView] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 600);
+      // Using 768px (md) to match Tailwind's breakdown used in MobileNav
+      setIsMobileView(window.innerWidth < 768);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -16,10 +18,12 @@ const PrevEditions = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden font-montserrat relative">
       <Mnavbar />
       {!isMobileView && <Navbar />}
+
       <Timeline />
       <Footerm />
     </div>

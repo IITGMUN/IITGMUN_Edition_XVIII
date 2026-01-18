@@ -33,7 +33,7 @@ const DisplayDetails = ({ imgLink, title, type, detailsArr }) => {
               >
                 {item}
               </p>
-            )
+            ),
           )}
         </div>
       </div>

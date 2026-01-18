@@ -89,24 +89,21 @@ const MeetTheTeam = () => {
 
   return (
     <div className="px-4 py-10 w-full relative bg-[#F3F8F9] mt-20">
-      {/* Updated Header Section with Fading Lines */}
-      <div className="w-full flex justify-center mb-36 mt-8">
+      {/* Header Section */}
+      {/* Fix: Reduced mb-36 to mb-12 on mobile, kept mb-36 on md/lg */}
+      <div className="w-full flex justify-center mb-12 md:mb-36 mt-8">
         <div className="inline-flex justify-start items-center gap-3 md:gap-6">
-          {/* Left Line: Fades from Transparent (left) to Blue (right) */}
           <div className="w-16 md:w-44 h-[3px] bg-gradient-to-r from-transparent to-blue-800 rounded-l-full"></div>
-
-          {/* Text */}
-          <div className="justify-center text-blue-800 text-4xl md:text-5xl font-europa leading-6 text-center font-extrabold">
+          <div className="justify-center text-blue-800 text-3xl md:text-5xl font-europa leading-6 text-center font-extrabold whitespace-nowrap">
             Meet the Team
           </div>
-
-          {/* Right Line: Fades from Blue (left) to Transparent (right) */}
           <div className="w-16 md:w-44 h-[3px] bg-gradient-to-r from-blue-800 to-transparent rounded-r-full"></div>
         </div>
       </div>
 
       {/* High Council Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-16">
+      {/* Fix: Reduced gap-10 to gap-y-12 gap-x-6 on mobile */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-10 max-w-4xl mx-auto mb-12 md:mb-16">
         {team2.map(([name, position, socialMedia, img]) => (
           <TeamCard
             key={name}
@@ -120,7 +117,7 @@ const MeetTheTeam = () => {
       </div>
 
       {/* Secretariat Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-10 max-w-6xl mx-auto">
         {team.map(([name, position, socialMedia, img]) => (
           <TeamCard
             key={name}

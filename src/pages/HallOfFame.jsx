@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/common/Navbar";
+import Mnavbar from "../components/common/MobileNav"; // Imported Mobile Nav
 import Footer from "../components/common/Footer";
 import hofHero from "../assets/images/hallOfFame/image.png";
 import lok from "../assets/images/hallOfFame/loksabha.svg";
@@ -96,7 +97,10 @@ const WinnerCard = ({ rank, title, name, blurb }) => {
   const cardHeight = rank === 1 ? "min-h-[200px]" : "min-h-[220px]";
   return (
     <article
-      className={`relative bg-[#f594ac] rounded-xl overflow-hidden shadow-md ${cardHeight} flex flex-col max-w-[240px] mx-auto ${rank === 1 ? "-mt-32 self-start" : ""}`}
+      // Added lg: prefix to -mt-32 and self-start so they only apply on desktop
+      className={`relative bg-[#f594ac] rounded-xl overflow-hidden shadow-md ${cardHeight} flex flex-col max-w-[240px] mx-auto ${
+        rank === 1 ? "lg:-mt-32 lg:self-start mt-6 lg:mt-0" : ""
+      }`}
     >
       <div className="absolute -left-3 -top-4 text-white text-[120px] font-extrabold leading-none opacity-70 select-none">
         {rank}
@@ -124,14 +128,15 @@ const WinnerCard = ({ rank, title, name, blurb }) => {
 const HonourableMentions = ({ mentions }) => {
   return (
     <div className="space-y-3">
-      <p className="text-2xl text-[#eb3360] font-semibold">
+      <p className="text-2xl text-[#eb3360] font-semibold text-center md:text-left">
         Honourable mentions
       </p>
-      <div className="bg-[#fde6ec] border border-[#f594ac] rounded-2xl p-4 grid grid-cols-3 gap-4">
+      {/* Changed to grid-cols-1 for mobile, md:grid-cols-2, and kept original 3 for desktop */}
+      <div className="bg-[#fde6ec] border border-[#f594ac] rounded-2xl p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {mentions.map((mention) => (
           <div
             key={mention}
-            className="bg-[#c0c0c0] rounded-xl h-72 flex items-center justify-center text-sm font-semibold text-white"
+            className="bg-[#c0c0c0] rounded-xl h-24 lg:h-72 flex items-center justify-center text-sm font-semibold text-white"
           >
             {mention}
           </div>
@@ -149,16 +154,18 @@ const CommitteeBlock = ({ name, winners, honourableMentions }) => {
           <img
             src={lok}
             alt={`${name} logo`}
-            className="w-64 h-64 object-contain mt-64 mr-32"
+            // Added lg: prefixes to preserve desktop margins, reset for mobile
+            className="w-48 h-48 lg:w-64 lg:h-64 object-contain mt-10 lg:mt-64 mr-0 lg:mr-32"
           />
-          <h3 className="text-3xl font-black text-[#1a2872] tracking-tight mr-36">
+          <h3 className="text-3xl font-black text-[#1a2872] tracking-tight mr-0 lg:mr-36">
             {name}
           </h3>
         </div>
 
         <div className="space-y-8">
           <div className="flex items-center justify-center">
-            <h4 className="text-5xl font-black text-[#283eb4] tracking-wide mb-48">
+            {/* Added lg: prefixes to mb-48 to reduce gap on mobile */}
+            <h4 className="text-4xl lg:text-5xl font-black text-[#283eb4] tracking-wide mb-12 lg:mb-48">
               Winners
             </h4>
           </div>
@@ -177,21 +184,36 @@ const CommitteeBlock = ({ name, winners, honourableMentions }) => {
 };
 
 export default function HallOfFame() {
+  // Added Mobile View Logic
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="bg-[#f1f8f3] min-h-screen text-slate-900">
-      <Navbar />
+    <div className="bg-[#f1f8f3] min-h-screen text-slate-900 overflow-x-hidden">
+      <Mnavbar />
+      {!isMobileView && <Navbar />}
 
       <main className="pt-28 md:pt-32">
         <section className="relative w-full overflow-hidden">
           <img
             src={hofHero}
             alt="Hall of Fame banner"
-            className="w-full h-auto block"
+            className="w-full h-auto block min-h-[150px] object-cover"
           />
         </section>
 
-        <div className="flex flex-col items-center mb-16 -mt-10">
-          <div className="flex items-center gap-8 mb-8 w-full max-w-4xl">
+        <div className="flex flex-col items-center mb-16 -mt-8">
+          <div className="flex items-center gap-4 lg:gap-8 mb-8 w-full max-w-4xl px-4">
             <div className="flex-1 h-1 bg-gradient-to-r from-transparent to-[#3958FD]"></div>
             <h2 className="text-3xl md:text-5xl font-black text-[#3958FD] font-raleway text-center whitespace-nowrap flex-shrink-0">
               COMMITTEES

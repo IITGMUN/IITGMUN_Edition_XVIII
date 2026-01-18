@@ -1,5 +1,4 @@
 import React from "react";
-// Make sure these logos are in src/assets/images/about/
 import linkedinLogo from "../../assets/images/about/linkedinLogo.svg";
 import instaLogo from "../../assets/images/about/instaLogo.svg";
 
@@ -8,36 +7,43 @@ const Details = ({ name = "", position = "", socialMedia }) => {
   const instagramUrl = socialMedia?.instagram;
 
   return (
-    <div className="text-center mt-4 overflow-hidden w-[120px] sm:w-[261px] m-auto relative -top-24">
-      <p className="text-xl lg:text-3xl font-extrabold font-raleway m-0 text-[#051c46] hyphens-auto">
+    // Mobile: static positioning, full width.
+    // Desktop (lg): relative -top-24 (pulls text up over image area for the effect), fixed width.
+    <div className="text-center mx-auto mt-2 lg:mt-4 lg:overflow-hidden w-full px-2 lg:px-0 lg:w-[261px] lg:relative lg:-top-24">
+      {/* Name: Smaller on mobile to fit one line if possible */}
+      <h3 className="text-lg font-extrabold font-raleway m-0 text-[#051c46] leading-tight lg:text-3xl">
         {name}
-      </p>
-      <p className="text-lg lg:text-xl text-grey font-light tracking-wider m-0 text-[#051c46] hyphens-auto">
+      </h3>
+
+      {/* Position */}
+      <p className="text-sm font-light tracking-wide m-0 text-[#051c46] mt-1 lg:text-xl lg:mt-0">
         {position}
       </p>
+
+      {/* Social Icons */}
       {(linkedinUrl || instagramUrl) && (
-        <p className="m-0 mt-1 flex items-center justify-center">
+        <div className="mt-2 lg:mt-1 flex items-center justify-center gap-3">
           {linkedinUrl && (
             <a
-              className="mr-2"
               href={linkedinUrl}
               target="_blank"
               rel="noreferrer"
+              className="hover:opacity-80 transition-opacity"
             >
-              <img className="w-8" src={linkedinLogo} alt="linkedinLogo" />
+              <img className="w-6 lg:w-8" src={linkedinLogo} alt="linkedin" />
             </a>
           )}
           {instagramUrl && (
             <a
-              className="mr-2"
               href={instagramUrl}
               target="_blank"
               rel="noreferrer"
+              className="hover:opacity-80 transition-opacity"
             >
-              <img className="w-8" src={instaLogo} alt="instagramLogo" />
+              <img className="w-6 lg:w-8" src={instaLogo} alt="instagram" />
             </a>
           )}
-        </p>
+        </div>
       )}
     </div>
   );
