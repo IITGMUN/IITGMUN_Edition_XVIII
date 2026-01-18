@@ -1,4 +1,3 @@
-import React from "react";
 // Ensure this path is correct for your project
 import sgImage from "../../assets/images/about/DSC_9304 14.png";
 

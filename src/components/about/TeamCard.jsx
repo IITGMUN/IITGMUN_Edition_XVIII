@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import Details from "./Details";
 
 const TeamCard = ({ name, position, socialMedia, img }) => {
@@ -26,6 +26,13 @@ const TeamCard = ({ name, position, socialMedia, img }) => {
       </div>
     </div>
   );
+};
+
+TeamCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  socialMedia: PropTypes.object,
+  img: PropTypes.string.isRequired,
 };
 
 export default TeamCard;

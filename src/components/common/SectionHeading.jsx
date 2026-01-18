@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const SectionHeading = ({ title, color }) => {
   return (
     <div className="flex flex-row justify-center items-center mb-8">
@@ -10,4 +12,10 @@ const SectionHeading = ({ title, color }) => {
     </div>
   );
 };
+
+SectionHeading.propTypes = {
+  title: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};
+
 export default SectionHeading;

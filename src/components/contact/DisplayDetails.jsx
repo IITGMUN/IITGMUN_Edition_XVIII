@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const DisplayDetails = ({ imgLink, title, type, detailsArr }) => {
   const links = ["tel", "mailto"];
@@ -39,6 +39,13 @@ const DisplayDetails = ({ imgLink, title, type, detailsArr }) => {
       </div>
     </div>
   );
+};
+
+DisplayDetails.propTypes = {
+  imgLink: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  detailsArr: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default DisplayDetails;

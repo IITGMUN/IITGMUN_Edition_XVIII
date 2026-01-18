@@ -269,10 +269,11 @@ const HomeContent = () => {
 
         <div className="relative z-10 flex flex-col items-center gap-4 px-4 md:px-6 text-center max-w-5xl w-full">
           <p className="text-stone-100/70 text-lg md:text-3xl font-normal leading-relaxed font-['Neue_Montreal']">
-            "That the powerful play goes on, and you may contribute a verse."
+            &quot;That the powerful play goes on, and you may contribute a
+            verse.&quot;
           </p>
           <h2 className="text-stone-100 text-2xl md:text-5xl font-bold leading-tight md:leading-[60px] font-['Neue_Montreal']">
-            "What verse shall be yours?"
+            &quot;What verse shall be yours?&quot;
           </h2>
           <p className="text-indigo-200 text-base md:text-3xl font-normal leading-7 md:leading-9 font-['Neue_Montreal']">
             O me! O life!, Walt Whitman

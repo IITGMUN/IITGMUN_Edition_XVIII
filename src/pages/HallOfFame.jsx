@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/common/Navbar";
 import Mnavbar from "../components/common/MobileNav"; // Imported Mobile Nav
 import Footer from "../components/common/Footer";
 import hofHero from "../assets/images/hallOfFame/image.png";
 import lok from "../assets/images/hallOfFame/loksabha.svg";
 import winnerPortrait from "../assets/images/hallOfFame/delegate.png";
+import PropTypes from "prop-types";
 
 const committees = [
   {
@@ -99,7 +100,7 @@ const WinnerCard = ({ rank, title, name, blurb }) => {
     <article
       // Added lg: prefix to -mt-32 and self-start so they only apply on desktop
       className={`relative bg-[#f594ac] rounded-xl overflow-hidden shadow-md ${cardHeight} flex flex-col max-w-[240px] mx-auto ${
-        rank === 1 ? "lg:-mt-32 lg:self-start mt-6 lg:mt-0" : ""
+        rank === 1 ? "lg:-mt-32 lg:self-start mt-6" : ""
       }`}
     >
       <div className="absolute -left-3 -top-4 text-white text-[120px] font-extrabold leading-none opacity-70 select-none">
@@ -125,6 +126,13 @@ const WinnerCard = ({ rank, title, name, blurb }) => {
   );
 };
 
+WinnerCard.propTypes = {
+  rank: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  blurb: PropTypes.string.isRequired,
+};
+
 const HonourableMentions = ({ mentions }) => {
   return (
     <div className="space-y-3">
@@ -144,6 +152,10 @@ const HonourableMentions = ({ mentions }) => {
       </div>
     </div>
   );
+};
+
+HonourableMentions.propTypes = {
+  mentions: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const CommitteeBlock = ({ name, winners, honourableMentions }) => {
@@ -181,6 +193,12 @@ const CommitteeBlock = ({ name, winners, honourableMentions }) => {
       <HonourableMentions mentions={honourableMentions} />
     </section>
   );
+};
+
+CommitteeBlock.propTypes = {
+  name: PropTypes.string.isRequired,
+  winners: PropTypes.arrayOf(PropTypes.object).isRequired,
+  honourableMentions: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default function HallOfFame() {

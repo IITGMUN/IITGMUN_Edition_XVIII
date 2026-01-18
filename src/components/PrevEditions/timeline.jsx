@@ -1,4 +1,3 @@
-import React from "react";
 import timelineSvg from "../../assets/images/prevEditions/timeline.svg";
 
 const Timeline = () => {

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const PageHeader = ({ title, subtitle, color }) => {
   return (
     <div
@@ -15,4 +17,11 @@ const PageHeader = ({ title, subtitle, color }) => {
     </div>
   );
 };
+
+PageHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  color: PropTypes.string.isRequired,
+};
+
 export default PageHeader;

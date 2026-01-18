@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import linkedinLogo from "../../assets/images/about/linkedinLogo.svg";
 import instaLogo from "../../assets/images/about/instaLogo.svg";
 
@@ -47,6 +47,15 @@ const Details = ({ name = "", position = "", socialMedia }) => {
       )}
     </div>
   );
+};
+
+Details.propTypes = {
+  name: PropTypes.string,
+  position: PropTypes.string,
+  socialMedia: PropTypes.shape({
+    linkedin: PropTypes.string,
+    instagram: PropTypes.string,
+  }),
 };
 
 export default Details;
