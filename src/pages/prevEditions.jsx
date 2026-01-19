@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/common/Navbar";
 import Mnavbar from "../components/common/MobileNav";
 import Footerm from "../components/common/Footer";
-import Timeline from "../components/PrevEditions/Timeline";
+import Timeline from "../components/PrevEditions/timeline";
 
 const PrevEditions = () => {
   const [isMobileView, setIsMobileView] = useState(false);

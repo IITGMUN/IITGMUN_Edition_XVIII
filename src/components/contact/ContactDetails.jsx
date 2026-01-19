@@ -7,7 +7,7 @@ import DisplayDetails from "./DisplayDetails";
 const ContactDetails = () => {
   const details = [
     [callImg, "Call us", "tel", ["8089205831", "9381843556"]],
-    [mailImg, "Mail us", "mailto", ["iitgmun@alcheringa.in"]],
+    [mailImg, "Mail us", "mailto", ["iitgmun@alcheringa.co.in"]],
     [
       locationImg,
       "Our location",

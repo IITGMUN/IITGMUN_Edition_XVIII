@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
-import ContactUs from "./pages/ContactUs";
-import PrevEditions from "./pages/PrevEditions";
+import AboutUs from "./pages/aboutUs";
+import ContactUs from "./pages/contactUs";
+import PrevEditions from "./pages/prevEditions";
 import HallOfFame from "./pages/HallOfFame";
 
 function App() {
