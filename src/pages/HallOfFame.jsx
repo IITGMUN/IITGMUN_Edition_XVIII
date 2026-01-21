@@ -1,126 +1,212 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/common/Navbar";
-import Mnavbar from "../components/common/MobileNav"; // Imported Mobile Nav
+import Mnavbar from "../components/common/MobileNav";
 import Footer from "../components/common/Footer";
 import hofHero from "../assets/images/hallOfFame/image.png";
 import lok from "../assets/images/hallOfFame/loksabha.svg";
-import winnerPortrait from "../assets/images/hallOfFame/delegate.png";
 import PropTypes from "prop-types";
 
+// --- Data Configuration ---
 const committees = [
   {
-    id: "lok-1",
+    id: "lok-sabha",
     name: "Lok Sabha",
     winners: [
       {
-        rank: 2,
-        title: "Best Delegate",
-        name: "Lorem Ipsum",
-        blurb:
-          "Lorem ipsum lorem ipsum orem ipsum lorem ipsum orem ipsum lorem.",
+        rank: 1,
+        title: "Best Parliamentarian",
+        name: "Niaz Tanweer Islam",
+        representation: "Asaduddin Owaisi",
+        email: "niaztanweer999@gmail.com",
       },
       {
-        rank: 1,
+        rank: 2,
         title: "High Commendation",
-        name: "Lorem Ipsum",
-        blurb:
-          "Experience: A delegation so accomplished and competitive surely pushes one's wit and speech to surpass itself. And for me, this storm of sharp speeches and charismatic chairs, supported by an ever-so efficient organizing committee, left me more capable than before.",
+        name: "Aaditya Raj",
+        representation: "Arvind Dharmapuri",
+        email: "aadityaraj2488@gmail.com",
       },
       {
         rank: 3,
         title: "Special Mention",
-        name: "Lorem Ipsum",
-        blurb:
-          "Lorem ipsum lorem ipsum orem ipsum lorem ipsum orem ipsum lorem.",
+        name: "Leom Lahkar",
+        representation: "Kalyan Banarjee",
+        email: "leomlahkar10@gmail.com",
+      },
+      {
+        rank: 3,
+        title: "Special Mention",
+        name: "Safdar Hafiz",
+        representation: "Mahua Moitra",
+        email: "safdarhafiz127@gmail.com",
       },
     ],
-    honourableMentions: ["Delegate 1", "Delegate 2", "Delegate 3"],
+    honourableMentions: [
+      { name: "Manabjit Ray", representation: "Rahul Gandhi" },
+      { name: "Tang Sawmsung", representation: "Nitin Gadkari" },
+      { name: "Aman Kumar", representation: "Narendra Modi" },
+    ],
+    verbalMentions: [
+      { name: "Utsab Kumar Bar", representation: "Saumitra Khan" },
+      { name: "Rajeswar Nag", representation: "Damodar Agarwal" },
+      { name: "Jenifar Azmi", representation: "Shashi Tharoor" },
+    ],
   },
   {
-    id: "lok-2",
-    name: "Lok Sabha",
+    id: "disec",
+    name: "DISEC",
     winners: [
       {
-        rank: 2,
+        rank: 1,
         title: "Best Delegate",
-        name: "Lorem Ipsum",
-        blurb:
-          "Lorem ipsum lorem ipsum orem ipsum lorem ipsum orem ipsum lorem.",
+        name: "Anurag Rajeshkumar Singh",
+        representation: "UK",
+        email: "anuragsingh25.02.04@gmail.com",
       },
       {
-        rank: 1,
+        rank: 2,
         title: "High Commendation",
-        name: "Lorem Ipsum",
-        blurb:
-          "Experience: A delegation so accomplished and competitive surely pushes one's wit and speech to surpass itself. And for me, this storm of sharp speeches and charismatic chairs, supported by an ever-so efficient organizing committee, left me more capable than before.",
+        name: "Atharav Sharma",
+        representation: "Iran",
+        email: "atharavsharma2020@gmail.com",
       },
       {
         rank: 3,
         title: "Special Mention",
-        name: "Lorem Ipsum",
-        blurb:
-          "Lorem ipsum lorem ipsum orem ipsum lorem ipsum orem ipsum lorem.",
+        name: "Shivam Thakur",
+        representation: "Russian Fed",
+        email: "cybershivam348@gmail.com",
+      },
+      {
+        rank: 3,
+        title: "Special Mention",
+        name: "Anik Chakraborty",
+        representation: "India",
+        email: "anik.newme@gmail.com",
       },
     ],
-    honourableMentions: ["Delegate 4", "Delegate 5", "Delegate 6"],
+    honourableMentions: [
+      { name: "Pranjal Diwakar", representation: "Australia" },
+      { name: "Kritya Raj Singh", representation: "Kenya" },
+      { name: "Sreejan Das", representation: "Somalia" },
+      { name: "Manya Agarwal", representation: "Pakistan" },
+      { name: "Aarav Borpujari", representation: "France" },
+    ],
+    verbalMentions: [],
   },
   {
-    id: "lok-3",
-    name: "Lok Sabha",
+    id: "ecofin",
+    name: "ECOFIN",
     winners: [
       {
-        rank: 2,
+        rank: 1,
         title: "Best Delegate",
-        name: "Lorem Ipsum",
-        blurb:
-          "Lorem ipsum lorem ipsum orem ipsum lorem ipsum orem ipsum lorem.",
+        name: "Rutajeet Karmakar",
+        representation: "Togo",
+        email: "hriktrick@gmail.com",
       },
       {
-        rank: 1,
+        rank: 2,
         title: "High Commendation",
-        name: "Lorem Ipsum",
-        blurb:
-          "Experience: A delegation so accomplished and competitive surely pushes one's wit and speech to surpass itself. And for me, this storm of sharp speeches and charismatic chairs, supported by an ever-so efficient organizing committee, left me more capable than before.",
+        name: "Vedansh Pareek",
+        representation: "Pakistan",
+        email: "vedanshpareek.09@gmail.com",
       },
       {
         rank: 3,
         title: "Special Mention",
-        name: "Lorem Ipsum",
-        blurb:
-          "Lorem ipsum lorem ipsum orem ipsum lorem ipsum orem ipsum lorem.",
+        name: "Shruthika Tiwari",
+        representation: "Indonesia",
+        email: "tiwaritanuja2@gmail.com",
+      },
+      {
+        rank: 3,
+        title: "Special Mention",
+        name: "Yash",
+        representation: "S. Africa",
+        email: "yashdahiya1281@gmail.com",
       },
     ],
-    honourableMentions: ["Delegate 7", "Delegate 8", "Delegate 9"],
+    honourableMentions: [
+      { name: "Shanit Tiwari", representation: "Finland" },
+      { name: "Jyotika Deviah", representation: "France" },
+      { name: "Akshay kumar jha", representation: "Nigeria" },
+    ],
+    verbalMentions: [
+      { name: "Amogh Singh Rathore", representation: "UAE" },
+      { name: "Himanshu Patidar", representation: "DPRK" },
+      { name: "Sawroop Bastia", representation: "Switzerland" },
+    ],
+  },
+  {
+    id: "ip",
+    name: "International Press",
+    winners: [
+      {
+        rank: 1,
+        title: "Best Journalist",
+        name: "Aditya Bhattacharjee",
+        representation: "Journalist",
+        email: "adityabhattacharjee36@gmail.com",
+      },
+      {
+        rank: 2,
+        title: "Best Photojournalist",
+        name: "Ryan Roy",
+        representation: "Photojournalist",
+        email: "ryanroyprime@gmail.com",
+      },
+    ],
+    honourableMentions: [],
+    verbalMentions: [],
   },
 ];
 
-const WinnerCard = ({ rank, title, name, blurb }) => {
-  const cardHeight = rank === 1 ? "min-h-[200px]" : "min-h-[220px]";
+// --- Components ---
+
+const WinnerCard = ({ rank, title, name, representation, email, index }) => {
+  // --- Layout Ordering Logic (3 - 1 - 2 - 3) ---
+  let orderClass = "lg:order-4";
+
+  if (rank === 1) {
+    orderClass = "lg:order-2";
+  } else if (rank === 2) {
+    orderClass = "lg:order-3";
+  } else if (index === 2) {
+    orderClass = "lg:order-1";
+  }
+
+  // --- Elevation Logic ---
+  const isTopRank = rank === 1 || rank === 2;
+
+  const elevationClass = isTopRank
+    ? "lg:-mt-16 lg:z-20 shadow-2xl border-2 border-[#f594ac]"
+    : "lg:mt-0 lg:z-10 shadow-md";
+
+  const borderClass = rank === 1 ? "border-yellow-400/60" : "border-[#f594ac]";
+
   return (
     <article
-      // Added lg: prefix to -mt-32 and self-start so they only apply on desktop
-      className={`relative bg-[#f594ac] rounded-xl overflow-hidden shadow-md ${cardHeight} flex flex-col max-w-[240px] mx-auto ${
-        rank === 1 ? "lg:-mt-32 lg:self-start mt-6" : ""
-      }`}
+      className={`relative bg-[#f594ac] rounded-xl overflow-hidden flex flex-col w-full lg:flex-1 min-w-[200px] transition-all duration-300 ${orderClass} ${elevationClass} ${isTopRank ? borderClass : ""}`}
     >
-      <div className="absolute -left-3 -top-4 text-white text-[120px] font-extrabold leading-none opacity-70 select-none">
+      {/* Rank Number Watermark */}
+      <div className="absolute -left-2 -top-2 text-white text-[80px] lg:text-[100px] font-extrabold leading-none opacity-50 select-none z-0">
         {rank}
       </div>
-      <div className="min-h-48 w-full overflow-hidden relative">
-        <img
-          src={winnerPortrait}
-          alt={name}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </div>
-      <div className="bg-[#1a2872] text-white px-4 py-4 flex flex-col gap-2 mt-auto">
-        <p className="text-base text-[#cfcfcf] leading-tight">{title}</p>
-        <p className="text-xl font-semibold text-[#e4e2e2] leading-none">
+
+      {/* Image Placeholder */}
+      <div className="h-28 lg:h-36 w-full bg-black/10 relative z-10"></div>
+
+      {/* Content - Reduced height and padding */}
+      <div className="bg-[#1a2872] text-white px-4 py-3 flex flex-col gap-0.5 mt-auto z-10 flex-grow min-h-0">
+        <p className="text-[10px] lg:text-xs font-bold text-[#f594ac] uppercase tracking-wider mb-1 line-clamp-1">
+          {title}
+        </p>
+        <h5 className="text-sm lg:text-base font-bold text-white leading-tight">
           {name}
-        </p>
-        <p className="text-xs leading-relaxed text-white/90 overflow-hidden max-h-20">
-          {blurb}
-        </p>
+        </h5>
+        <p className="text-xs text-[#cfcfcf] font-medium">{representation}</p>
+        <p className="text-[10px] text-white/60 break-all mt-1">{email}</p>
       </div>
     </article>
   );
@@ -130,23 +216,40 @@ WinnerCard.propTypes = {
   rank: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  blurb: PropTypes.string.isRequired,
+  representation: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  index: PropTypes.number,
 };
 
-const HonourableMentions = ({ mentions }) => {
+const MentionsList = ({ title, items, alignRight = false }) => {
+  if (!items || items.length === 0) return null;
+
   return (
-    <div className="space-y-3">
-      <p className="text-2xl text-[#eb3360] font-semibold text-center md:text-left">
-        Honourable mentions
-      </p>
-      {/* Changed to grid-cols-1 for mobile, md:grid-cols-2, and kept original 3 for desktop */}
-      <div className="bg-[#fde6ec] border border-[#f594ac] rounded-2xl p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {mentions.map((mention) => (
+    <div className="flex-1 w-full">
+      <h4
+        className={`text-xl text-[#eb3360] font-bold mb-4 text-center ${alignRight ? "lg:text-right" : "lg:text-left"}`}
+      >
+        {title}
+      </h4>
+      <div
+        className={`flex flex-col gap-3 w-full ${alignRight ? "items-end" : "items-start"}`}
+      >
+        {items.map((item, idx) => (
           <div
-            key={mention}
-            className="bg-[#c0c0c0] rounded-xl h-24 lg:h-72 flex items-center justify-center text-sm font-semibold text-white"
+            key={idx}
+            // CHANGED: w-full ensures the box spans the entire width of the column
+            className="bg-white border border-pink-200 rounded-lg py-2 px-4 w-full text-[#1a2872] shadow-sm hover:shadow-md transition-all"
           >
-            {mention}
+            <div
+              className={`font-bold text-sm ${alignRight ? "text-right" : "text-left"}`}
+            >
+              {item.name}
+            </div>
+            <div
+              className={`text-xs text-slate-500 uppercase tracking-wide ${alignRight ? "text-right" : "text-left"}`}
+            >
+              {item.representation}
+            </div>
           </div>
         ))}
       </div>
@@ -154,43 +257,79 @@ const HonourableMentions = ({ mentions }) => {
   );
 };
 
-HonourableMentions.propTypes = {
-  mentions: PropTypes.arrayOf(PropTypes.string).isRequired,
+MentionsList.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.array,
+  alignRight: PropTypes.bool,
 };
 
-const CommitteeBlock = ({ name, winners, honourableMentions }) => {
+const CommitteeBlock = ({
+  name,
+  winners,
+  honourableMentions,
+  verbalMentions,
+}) => {
   return (
-    <section className="space-y-8">
-      <div className="grid lg:grid-cols-[320px_1fr] gap-10 items-start">
-        <div className="flex flex-col items-center gap-3 text-center">
-          <img
-            src={lok}
-            alt={`${name} logo`}
-            // Added lg: prefixes to preserve desktop margins, reset for mobile
-            className="w-48 h-48 lg:w-64 lg:h-64 object-contain mt-10 lg:mt-64 mr-0 lg:mr-32"
-          />
-          <h3 className="text-3xl font-black text-[#1a2872] tracking-tight mr-0 lg:mr-36">
+    <section className="bg-white rounded-3xl p-6 lg:p-10 shadow-sm border border-slate-100">
+      {/* Top Section: Logo + Winners */}
+      <div className="flex flex-col xl:flex-row gap-12 items-start">
+        {/* Left Column: Logo & Name */}
+        <div className="flex flex-col items-center text-center xl:w-[250px] flex-shrink-0 xl:sticky xl:top-32 h-fit mx-auto xl:mx-0">
+          <div className="w-40 h-40 bg-slate-50 rounded-full flex items-center justify-center mb-6 shadow-inner p-6">
+            <img
+              src={lok}
+              alt={`${name} logo`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <h3 className="text-2xl font-black text-[#1a2872] uppercase tracking-tight">
             {name}
           </h3>
+          <div className="h-1 w-12 bg-[#eb3360] mt-4 rounded-full"></div>
         </div>
 
-        <div className="space-y-8">
-          <div className="flex items-center justify-center">
-            {/* Added lg: prefixes to mb-48 to reduce gap on mobile */}
-            <h4 className="text-4xl lg:text-5xl font-black text-[#283eb4] tracking-wide mb-12 lg:mb-48">
-              Winners
-            </h4>
-          </div>
+        {/* Right Column: Winners */}
+        <div className="flex-1 w-full">
+          <h4 className="text-3xl font-bold text-[#283eb4] mb-12 text-center lg:text-left">
+            Winners
+          </h4>
 
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {winners.map((winner) => (
-              <WinnerCard key={winner.rank} {...winner} />
+          <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-6 lg:gap-4 pt-20 lg:pt-24">
+            {winners.map((winner, index) => (
+              <WinnerCard
+                key={`${winner.name}-${index}`}
+                index={index}
+                {...winner}
+              />
             ))}
           </div>
         </div>
       </div>
 
-      <HonourableMentions mentions={honourableMentions} />
+      {/* Bottom Section: Mentions (Full Width) */}
+      {(honourableMentions?.length > 0 || verbalMentions?.length > 0) && (
+        <div className="mt-16 bg-[#fde6ec] border border-[#f594ac] rounded-2xl p-6 lg:p-8 w-full">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 w-full">
+            {/* Left: Honourable */}
+            <MentionsList
+              title="Honourable Mentions"
+              items={honourableMentions}
+            />
+
+            {/* Divider for Desktop */}
+            {honourableMentions?.length > 0 && verbalMentions?.length > 0 && (
+              <div className="hidden lg:block w-[1px] bg-[#f594ac]/50 self-stretch my-2"></div>
+            )}
+
+            {/* Right: Verbal */}
+            <MentionsList
+              title="Verbal Mentions"
+              items={verbalMentions}
+              alignRight={true}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
@@ -198,11 +337,11 @@ const CommitteeBlock = ({ name, winners, honourableMentions }) => {
 CommitteeBlock.propTypes = {
   name: PropTypes.string.isRequired,
   winners: PropTypes.arrayOf(PropTypes.object).isRequired,
-  honourableMentions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  honourableMentions: PropTypes.arrayOf(PropTypes.object),
+  verbalMentions: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default function HallOfFame() {
-  // Added Mobile View Logic
   const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
@@ -217,12 +356,13 @@ export default function HallOfFame() {
   }, []);
 
   return (
-    <div className="bg-[#f1f8f3] min-h-screen text-slate-900 overflow-x-hidden">
+    <div className="bg-[#f8faff] min-h-screen font-sans text-slate-900 overflow-x-hidden">
       <Mnavbar />
       {!isMobileView && <Navbar />}
 
-      <main className="pt-28 md:pt-32">
-        <section className="relative w-full overflow-hidden">
+      <main className="pt-28 md:pt-32 pb-20">
+        {/* Hero Section */}
+        <section className="relative w-full overflow-hidden mb-16">
           <img
             src={hofHero}
             alt="Hall of Fame banner"
@@ -240,7 +380,8 @@ export default function HallOfFame() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 space-y-16 pb-20">
+        {/* Committees Loop */}
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-24">
           {committees.map((committee) => (
             <CommitteeBlock key={committee.id} {...committee} />
           ))}
