@@ -225,28 +225,28 @@ const MentionsList = ({ title, items, alignRight = false }) => {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="flex-1 w-full">
+    <div className="flex-1 w-full min-w-0">
       <h4
         className={`text-xl text-[#eb3360] font-bold mb-4 text-center ${alignRight ? "lg:text-right" : "lg:text-left"}`}
       >
         {title}
       </h4>
       <div
-        className={`flex flex-col gap-3 w-full ${alignRight ? "items-end" : "items-start"}`}
+        className={`flex flex-col gap-3 w-full min-w-0 ${alignRight ? "items-end" : "items-start"}`}
       >
         {items.map((item, idx) => (
           <div
             key={idx}
             // CHANGED: w-full ensures the box spans the entire width of the column
-            className="bg-white border border-pink-200 rounded-lg py-2 px-4 w-full text-[#1a2872] shadow-sm hover:shadow-md transition-all"
+            className="bg-white border border-pink-200 rounded-lg py-2 px-4 w-[95%] text-[#1a2872] shadow-sm hover:shadow-md transition-all overflow-hidden min-w-0"
           >
             <div
-              className={`font-bold text-sm ${alignRight ? "text-right" : "text-left"}`}
+              className={`font-bold text-sm break-words ${alignRight ? "text-right" : "text-left"}`}
             >
               {item.name}
             </div>
             <div
-              className={`text-xs text-slate-500 uppercase tracking-wide ${alignRight ? "text-right" : "text-left"}`}
+              className={`text-xs text-slate-500 uppercase tracking-wide break-words ${alignRight ? "text-right" : "text-left"}`}
             >
               {item.representation}
             </div>
@@ -308,8 +308,8 @@ const CommitteeBlock = ({
 
       {/* Bottom Section: Mentions (Full Width) */}
       {(honourableMentions?.length > 0 || verbalMentions?.length > 0) && (
-        <div className="mt-16 bg-[#fde6ec] border border-[#f594ac] rounded-2xl p-6 lg:p-8 w-full">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 w-full">
+        <div className="mt-16 bg-[#fde6ec] border border-[#f594ac] rounded-2xl p-6 lg:p-8">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 w-full min-w-0">
             {/* Left: Honourable */}
             <MentionsList
               title="Honourable Mentions"
