@@ -1,6 +1,8 @@
 import TeamCard from "./TeamCard";
 
 // Image Imports
+import profile1 from "../../assets/images/about/profile 1.png";
+import profile2 from "../../assets/images/about/profile 2.png";
 import ketan from "../../assets/images/about/Profile 4.png";
 import adityan from "../../assets/images/about/Profile 5.png";
 import pratham from "../../assets/images/about/Profile 6.png";
@@ -16,70 +18,82 @@ import Rishith3 from "../../assets/images/about/Profile 17.png";
 const MeetTheTeam = () => {
   const team = [
     [
-      "Thanmai Sai Krishna",
+      "Aditya Dhaniyaal",
       "Chief of Staff",
       { linkedin: "#", instagram: "#" },
       samarth,
     ],
     [
-      "Ashutosh Balasubramaniam",
+      "Sumant Kumar",
       "Director of IP",
       { linkedin: "#", instagram: "#" },
       pratham,
     ],
     [
-      "Ansul Jain",
+      "Kavya Kumar Agarwal",
       "Director WebOps",
       { linkedin: "#", instagram: "#" },
       vedika,
     ],
     [
-      "Ayush Kumar",
-      "Director of Public Relations",
+      "Kamali",
+      "Director of Public Relations & Outreach",
       { linkedin: "#", instagram: "#" },
       kausth,
     ],
     [
-      "Dhyani Patel",
+      "Dev Shukla",
       "Director Administration",
       { linkedin: "#", instagram: "#" },
       Rishith,
     ],
     [
-      "Aarohan Gupta",
+      "Sunke Pranavasree",
       "Director Delegate Affairs",
       { linkedin: "#", instagram: "#" },
       Rishith2,
     ],
     [
-      "Rayansh Khamesra",
+      "Vedant Sinha",
       "Director Marketing",
       { linkedin: "#", instagram: "#" },
       Rishith3,
     ],
     [
-      "Aman Gahukar",
+      "Rabi Sonowal",
       "Director of Creative Content",
       { linkedin: "#", instagram: "#" },
       advait,
     ],
     [
-      "Harishankar Yadav",
+      "Pria",
       "Director Logistics",
       { linkedin: "#", instagram: "#" },
       basith,
+    ],
+    [
+      "Bhuwan Varma",
+      "Director of Design",
+      { linkedin: "#", instagram: "#" },
+      profile1,
+    ],
+    [
+      "Arsh Chand",
+      "Director of EB Affairs",
+      { linkedin: "#", instagram: "#" },
+      profile2,
     ],
   ];
 
   const team2 = [
     [
-      "Yoshita Banerjee",
+      "Vaishnav",
       "Secretary General",
       { linkedin: "#", instagram: "#" },
       adityan,
     ],
     [
-      "Divya Mate",
+      "Ashwitha Manne",
       "Director General",
       { linkedin: "#", instagram: "#" },
       ketan,
@@ -116,16 +130,17 @@ const MeetTheTeam = () => {
       </div>
 
       {/* Secretariat Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-10 max-w-6xl mx-auto">
+      <div className="w-full flex flex-wrap justify-center gap-y-12 md:gap-10 max-w-6xl mx-auto">
         {team.map(([name, position, socialMedia, img]) => (
-          <TeamCard
-            key={name}
-            name={name}
-            position={position}
-            socialMedia={socialMedia}
-            img={img}
-            variant="pink"
-          />
+          <div key={name} className="w-full md:w-[30%] flex justify-center">
+            <TeamCard
+              name={name}
+              position={position}
+              socialMedia={socialMedia}
+              img={img}
+              variant="pink"
+            />
+          </div>
         ))}
       </div>
     </div>

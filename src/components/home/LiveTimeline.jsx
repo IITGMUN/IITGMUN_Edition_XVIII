@@ -1,146 +1,141 @@
 import { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 
-// Helper to check status based on time
-const getEventStatus = (eventTime, nextEventTime) => {
+// Helper to check status based on time and date
+const getEventStatus = (date, startTime, endTime) => {
   const now = new Date();
+  
+  // Format: "DD/MM/YYYY" -> "YYYY-MM-DD" for Date constructor or manual parsing
+  const [day, month, year] = date.split("/").map(Number);
+  
+  const start = new Date(year, month - 1, day);
+  const [sHours, sMinutes] = startTime.split(":").map(Number);
+  start.setHours(sHours, sMinutes, 0, 0);
 
-  // Create Date objects for today with the specific event times
-  const [hours, minutes] = eventTime.split(":").map(Number);
-  const eventDate = new Date();
-  eventDate.setHours(hours, minutes, 0);
+  const end = new Date(year, month - 1, day);
+  const [eHours, eMinutes] = endTime.split(":").map(Number);
+  end.setHours(eHours, eMinutes, 0, 0);
 
-  let nextEventDate = null;
-  if (nextEventTime) {
-    const [nextHours, nextMinutes] = nextEventTime.split(":").map(Number);
-    nextEventDate = new Date();
-    nextEventDate.setHours(nextHours, nextMinutes, 0);
-  }
-
-  // LOGIC:
-  // If we have passed the next event's start time -> This event is 'completed'
-  // If we are past this event start but before next event -> This event is 'active'
-  // Otherwise -> 'upcoming'
-
-  if (nextEventDate && now >= nextEventDate) return "completed";
-  if (now >= eventDate) return "active";
+  if (now > end) return "completed";
+  if (now >= start && now <= end) return "active";
   return "upcoming";
 };
 
-const TimelineItem = ({ time, label, status, isLast }) => {
-  // Styles based on status
-  const isCompleted = status === "completed";
-  const isActive = status === "active";
-
-  // Colors
-  const activeColor = "bg-[#eb3360]"; // Pink
-  const inactiveColor = "bg-gray-300"; // Grey
-  const textColor = isActive ? "text-[#eb3360]" : "text-gray-400";
-
+const ItineraryDay = ({ date, events, themeColor, secondaryColor }) => {
   return (
-    <div className="relative flex flex-col items-center flex-1">
-      {/* 1. The Tooltip (Task Name) */}
-      <div
-        className={`relative mb-4 px-4 py-1.5 rounded-lg text-xs font-bold text-white transition-all duration-300 
-          ${isActive || isCompleted ? activeColor : inactiveColor}
-          ${isActive ? "scale-110 shadow-lg" : "scale-100"}
-        `}
-      >
-        {label}
-        {/* The little arrow pointing down */}
-        <div
-          className={`absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-current 
-          ${isActive || isCompleted ? "text-[#eb3360]" : "text-gray-300"}`}
-        ></div>
+    <div className={`flex-1 min-w-[300px] rounded-3xl p-6 shadow-xl ${secondaryColor} flex flex-col gap-6`}>
+      <h3 className={`text-4xl font-bold text-center ${themeColor} mb-4`}>{date}</h3>
+      <div className="flex flex-col gap-4">
+        {events.map((event, index) => {
+          const status = getEventStatus(date, event.startTime, event.endTime);
+          const isActive = status === "active";
+          const isCompleted = status === "completed";
+
+          return (
+            <div key={index} className="flex flex-col">
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col text-xs font-medium text-gray-500 w-12 shrink-0">
+                  <span className={isActive ? themeColor : ""}>{event.startTime}</span>
+                  <div className={`h-[1px] w-full my-1 ${isCompleted ? "bg-[#eb3360]" : "bg-gray-300"}`}></div>
+                  <span className={isActive ? themeColor : ""}>{event.endTime}</span>
+                </div>
+                <div className={`flex-1 font-bold text-lg ${isActive ? themeColor : "text-blue-900"} opacity-90`}>
+                  {event.label}
+                </div>
+              </div>
+              {index !== events.length - 1 && (
+                <div className={`h-[1px] w-full mt-4 bg-gray-200/50`}></div>
+              )}
+            </div>
+          );
+        })}
       </div>
-
-      {/* 2. The Line Connector (Behind the dots) */}
-      {!isLast && (
-        <div className="absolute top-[3.25rem] left-1/2 w-full h-[2px] -z-10">
-          {/* Background grey line */}
-          <div className="w-full h-full bg-gray-200"></div>
-          {/* Colored progress overlay */}
-          <div
-            className={`h-full transition-all duration-500 ${activeColor}`}
-            style={{ width: isCompleted ? "100%" : isActive ? "50%" : "0%" }}
-          ></div>
-        </div>
-      )}
-
-      {/* 3. The Dot */}
-      <div
-        className={`w-6 h-6 rounded-full border-4 z-10 transition-all duration-300
-        ${
-          isActive
-            ? "bg-white border-[#eb3360] scale-125 ring-2 ring-[#eb3360]/30"
-            : isCompleted
-              ? "bg-[#eb3360] border-[#eb3360]"
-              : "bg-gray-300 border-gray-300"
-        }`}
-      ></div>
-
-      {/* 4. The Time Stamp */}
-      <div className={`mt-2 text-sm font-semibold ${textColor}`}>{time}</div>
     </div>
   );
 };
 
-TimelineItem.propTypes = {
-  time: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
-  isLast: PropTypes.bool.isRequired,
+ItineraryDay.propTypes = {
+  date: PropTypes.string.isRequired,
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      startTime: PropTypes.string.isRequired,
+      endTime: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  themeColor: PropTypes.string.isRequired,
+  secondaryColor: PropTypes.string.isRequired,
 };
 
 export default function LiveTimeline() {
-  // Sample Data - Change times to test different states!
-  const schedule = useMemo(
-    () => [
-      { id: 1, time: "09:00", label: "Registration" },
-      { id: 2, time: "10:00", label: "Opening Ceremony" },
-      { id: 3, time: "13:30", label: "Lunch Break" }, // Change this to near your current time to test
-      { id: 4, time: "16:00", label: "Closing" },
-    ],
-    [],
-  );
+  const itineraryData = useMemo(() => [
+    {
+      date: "30/01/2026",
+      themeColor: "text-blue-600",
+      secondaryColor: "bg-blue-50/50",
+      events: [
+        { startTime: "09:00", endTime: "10:00", label: "Registrations" },
+        { startTime: "10:00", endTime: "11:00", label: "Opening ceremony" },
+        { startTime: "11:00", endTime: "12:30", label: "Session 1" },
+        { startTime: "12:30", endTime: "13:30", label: "LUNCH" },
+        { startTime: "13:30", endTime: "15:00", label: "Session 2" },
+        { startTime: "15:00", endTime: "15:30", label: "HIGH TEA" },
+        { startTime: "15:30", endTime: "17:00", label: "Session 3" },
+        { startTime: "17:00", endTime: "17:15", label: "Press Conference 1" },
+      ]
+    },
+    {
+      date: "31/01/2026",
+      themeColor: "text-[#eb3360]",
+      secondaryColor: "bg-red-50/50",
+      events: [
+        { startTime: "09:30", endTime: "12:00", label: "Session 4" },
+        { startTime: "12:00", endTime: "13:00", label: "LUNCH" },
+        { startTime: "13:00", endTime: "14:30", label: "Session 5" },
+        { startTime: "14:30", endTime: "15:00", label: "HIGH TEA" },
+        { startTime: "15:00", endTime: "16:15", label: "Session 6" },
+        { startTime: "16:15", endTime: "16:30", label: "Press Conference 2" },
+        { startTime: "17:00", endTime: "18:00", label: "Delegate Ball" },
+      ]
+    },
+    {
+      date: "01/02/2026",
+      themeColor: "text-blue-600",
+      secondaryColor: "bg-blue-50/50",
+      events: [
+        { startTime: "09:45", endTime: "12:30", label: "Session 7" },
+        { startTime: "12:30", endTime: "13:30", label: "LUNCH" },
+        { startTime: "13:30", endTime: "15:45", label: "Session 8" },
+        { startTime: "15:45", endTime: "16:00", label: "Press Conference 3" },
+        { startTime: "16:00", endTime: "17:00", label: "Closing Ceremony" },
+      ]
+    }
+  ], []);
 
-  const [statuses, setStatuses] = useState({});
+  const [tick, setTick] = useState(0);
 
   useEffect(() => {
-    const updateTimeline = () => {
-      const newStatuses = {};
-      schedule.forEach((item, index) => {
-        const nextItem = schedule[index + 1];
-        newStatuses[item.id] = getEventStatus(item.time, nextItem?.time);
-      });
-      setStatuses(newStatuses);
-    };
-
-    // Initial call
-    updateTimeline();
-
-    // Update every minute (60000ms) so it stays real-time
-    const interval = setInterval(updateTimeline, 60000);
+    const interval = setInterval(() => setTick(t => t + 1), 60000);
     return () => clearInterval(interval);
-  }, [schedule]);
+  }, []);
 
   return (
-    <div className="w-full py-12 px-4 bg-[#f1f8f3]">
-      <div className="max-w-4xl mx-auto relative">
-        {/* Continuous horizontal line through all timeline items */}
-        <div className="absolute top-[3.25rem] left-0 right-0 h-[3px] bg-gray-200 z-0"></div>
+    <div className="w-full py-20 px-4 bg-[#F1F8F3] font-montserrat">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-7xl font-black text-blue-950 tracking-tighter mb-4">
+            ITINERARY
+          </h2>
+          <div className="w-24 h-2 bg-[#eb3360] mx-auto rounded-full"></div>
+        </div>
 
-        <div className="flex justify-between items-start relative z-10">
-          {schedule.map((item, index) => (
-            <TimelineItem
-              key={item.id}
-              {...item}
-              status={statuses[item.id]}
-              isLast={index === schedule.length - 1}
-            />
+        <div className="flex flex-wrap justify-center gap-8">
+          {itineraryData.map((day, index) => (
+            <ItineraryDay key={index} {...day} />
           ))}
         </div>
       </div>
     </div>
   );
 }
+

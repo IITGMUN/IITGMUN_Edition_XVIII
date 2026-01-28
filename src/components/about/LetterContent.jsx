@@ -1,5 +1,5 @@
 // Ensure this path is correct for your project
-import sgImage from "../../assets/images/about/DSC_9304 14.png";
+import sgImage from "../../assets/images/about/vaishnav.png";
 
 const LetterContent = () => {
   return (
@@ -43,7 +43,7 @@ const LetterContent = () => {
         </p>
 
         <div className="font-medium text-[#1a1a1a]">
-          <p className="font-bold text-base">Yoshita Banerjee</p>
+          <p className="font-bold text-base">Vaishnav</p>
           <p>Secretary General</p>
           <p>IITGMUN Edition XVII</p>
         </div>
@@ -56,7 +56,7 @@ const LetterContent = () => {
           <img
             className="w-full h-auto object-contain drop-shadow-2xl"
             src={sgImage}
-            alt="Yoshita Banerjee - Secretary General"
+            alt="Vaishnav - Secretary General"
           />
         </div>
       </div>

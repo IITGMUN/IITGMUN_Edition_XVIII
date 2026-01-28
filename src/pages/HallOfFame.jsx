@@ -270,7 +270,7 @@ const CommitteeBlock = ({
   verbalMentions,
 }) => {
   return (
-    <section className="bg-white rounded-3xl p-6 lg:p-10 shadow-sm border border-slate-100">
+    <section className="bg-[#F1F7F2] rounded-3xl p-6 lg:p-10 shadow-sm border border-slate-100">
       {/* Top Section: Logo + Winners */}
       <div className="flex flex-col xl:flex-row gap-12 items-start">
         {/* Left Column: Logo & Name */}
@@ -356,7 +356,7 @@ export default function HallOfFame() {
   }, []);
 
   return (
-    <div className="bg-[#f8faff] min-h-screen font-sans text-slate-900 overflow-x-hidden">
+    <div className="bg-[#F1F7F2] min-h-screen font-sans text-slate-900 overflow-x-hidden">
       <Mnavbar />
       {!isMobileView && <Navbar />}
 

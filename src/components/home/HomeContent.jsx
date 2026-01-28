@@ -15,13 +15,9 @@ import male_profile from "../../assets/images/home/Male profile.png";
 import committees_bg from "../../assets/images/home/Frame 34733.svg";
 
 // Sponsors
-import sponsor1 from "../../assets/images/home/news18 assam north east combined 1.png";
-import sponsor2 from "../../assets/images/home/sp wall.png";
-import sponsor3 from "../../assets/images/home/spns33new.png";
-import sponsor4 from "../../assets/images/home/tesmaco.png";
-import sponsor11 from "../../assets/images/home/dev remake 1.png";
-import sponsor12 from "../../assets/images/home/axis.png";
-import sponsor13 from "../../assets/images/home/Group.png";
+import sponsor2 from "../../assets/images/home/midweek.png";
+import sponsor3 from "../../assets/images/home/easemytrip.png";
+import sponsor4 from "../../assets/images/home/kgen.png";
 
 // --- DATA: REVIEWS ---
 const ReviewData = [
@@ -237,9 +233,9 @@ const HomeContent = () => {
           </div>
 
           <div className="bg-[#4169E1] text-white font-bold py-3 px-8 shadow-2xl flex flex-col items-center relative z-10">
-            <span className="text-4xl font-black">8-10</span>
-            <span className="text-sm tracking-[0.2em] uppercase font-semibold">
-              March
+            <span className="text-4xl font-black">30-1</span>
+            <span className="text-sm tracking-[0.1em] uppercase font-semibold">
+              Jan-Feb
             </span>
             <div className="absolute top-full left-0 w-0 h-0 border-t-[16px] border-t-[#27408B] border-l-[16px] border-l-transparent"></div>
           </div>
@@ -417,40 +413,25 @@ const HomeContent = () => {
           <div className="flex items-center gap-4 md:gap-8 mb-8 w-full max-w-4xl">
             <div className="flex-1 h-1 bg-gradient-to-r from-transparent to-rose-400"></div>
             <h2 className="text-2xl md:text-4xl font-black text-[#F06285] font-raleway text-center whitespace-nowrap flex-shrink-0">
-              Our Previous Partners
+              Our Partners
             </h2>
             <div className="flex-1 h-1 bg-gradient-to-l from-transparent to-rose-400"></div>
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-8 md:space-y-12">
-          {/* Top Row */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 items-center justify-items-center">
-            {[sponsor11, sponsor12, sponsor13].map((src, i) => (
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center justify-items-center">
+            {[sponsor2, sponsor3, sponsor4].map((src, i) => (
               <div
                 key={i}
-                className={`w-full max-w-[200px] h-24 md:h-32 flex items-center justify-center p-4 ${i === 0 ? "col-span-2 md:col-span-1" : ""}`}
+                className="w-full max-w-[320px] h-40 md:h-56 flex items-center justify-center p-6 bg-gray-50/50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
                 <img
                   src={src}
-                  className="w-full h-full object-contain hover:scale-105 transition-transform"
-                  alt="Sponsor"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
-            {[sponsor1, sponsor2, sponsor3, sponsor4].map((src, i) => (
-              <div
-                key={i}
-                className="w-full max-w-[160px] h-20 md:h-24 flex items-center justify-center p-4"
-              >
-                <img
-                  src={src}
-                  className="w-full h-full object-contain hover:scale-105 transition-transform"
-                  alt="Sponsor"
+                  className={`${
+                    i === 2 ? "w-[75%] h-[75%]" : "w-full h-full"
+                  } object-contain hover:scale-105 transition-transform`}
+                  alt="Partner"
                 />
               </div>
             ))}

@@ -5,7 +5,7 @@ import alcher from "../../assets/images/common/Mask group.png";
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About us", path: "/AboutUs" },
+    { name: "The Secretariat", path: "/AboutUs" },
     { name: "Hall of Fame", path: "/HallOfFame" },
     { name: "Previous Editions", path: "/PreviousEditions" },
     { name: "Contact us", path: "/ContactUs" },

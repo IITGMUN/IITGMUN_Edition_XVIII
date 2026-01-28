@@ -71,7 +71,7 @@ const AboutUs = () => {
 
         {/* Logo Section */}
         <div className="w-full md:w-2/5 flex justify-center md:justify-start">
-          <div className="w-48 h-48 md:w-80 md:h-80 flex items-center justify-center bg-white/10 rounded-full p-4 backdrop-blur-sm">
+          <div className="w-48 h-48 md:w-80 md:h-80 flex items-center justify-center bg-[#EE3C66] rounded-full p-4 backdrop-blur-sm">
             <img
               src={munLogo}
               alt="IITGMUN Logo"
